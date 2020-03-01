@@ -7,13 +7,14 @@
     <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
-    <!-- header 추가 -->
-    <div th:insert="common/header.html" id="header"></div>
+<!-- header 추가 -->
+<div th:insert="common/header.html" id="header"></div>
 
+<div id="wrap">
     <a th:href="@{/post}">글쓰기</a>
 
     <form action="/board/search" method="GET">
-        <div>
+        <div class="search">
             <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
         </div>
 
@@ -56,8 +57,9 @@
         <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
     </span>
     </div>
+</div>
 
-    <!-- footer 추가 -->
-    <div th:insert="common/footer.html" id="footer"></div>
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
 </body>
 </html>
