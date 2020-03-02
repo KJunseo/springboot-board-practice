@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -44,5 +45,19 @@ public class BoardController {
 
         model.addAttribute("boardDto", boardDto);
         return "board/detail.html";
+    }
+
+    @GetMapping("/post/edit/{no}")
+    public String edit(@PathVariable("no") Long id, Model model) {
+        BoardDto boardDto = boardService.getPost(id);
+
+        model.addAttribute("boardDto", boardDto);
+        return "board/update.html";
+    }
+
+    @PutMapping("/post/edit/{no}")
+    public String update(BoardDto boardDto) {
+        boardService.savePost(boardDto);
+        return "redirect:/";
     }
 }
