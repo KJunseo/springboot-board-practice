@@ -64,4 +64,12 @@ public class BoardController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/board/search")
+    public String search(@RequestParam(value = "keyword") String keyword, Model model) {
+        List<BoardDto> boardDtoList = boardService.searchPosts(keyword);
+        model.addAttribute("boardList", boardDtoList);
+
+        return "board/list.html";
+    }
 }
